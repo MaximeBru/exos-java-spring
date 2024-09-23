@@ -32,8 +32,6 @@ public class Utilisateur {
     @Column(name = "mot_de_passe", nullable = false)
     private String motDePasse;
 
-    // Getters et Setters
-
     public Long getId() {
         return id;
     }
