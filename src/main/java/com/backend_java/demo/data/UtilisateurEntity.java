@@ -1,4 +1,4 @@
-package com.backend_java.demo.entities;
+package com.backend_java.demo.data;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
@@ -11,7 +11,7 @@ import java.util.Objects;
 @Table(name = "utilisateurs", uniqueConstraints = {
         @UniqueConstraint(columnNames = "email")
 })
-public class Utilisateur {
+public class UtilisateurEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,6 +31,28 @@ public class Utilisateur {
     @Size(min = 6, message = "Le mot de passe doit comporter au moins 6 caractères")
     @Column(name = "mot_de_passe", nullable = false)
     private String motDePasse;
+
+    public UtilisateurEntity(){
+    }
+
+    public UtilisateurEntity(String nomUtilisateur, String email,String motDePasse){
+        this.nomUtilisateur = nomUtilisateur;
+        this.email = email;
+        this.motDePasse = motDePasse;
+    }
+
+    public UtilisateurEntity(Long id,String nomUtilisateur, String email,String motDePasse){
+        this.id = id;
+        this.nomUtilisateur = nomUtilisateur;
+        this.email = email;
+        this.motDePasse = motDePasse;
+    }
+
+    public UtilisateurEntity(Long id,String nomUtilisateur, String email){
+        this.id = id;
+        this.nomUtilisateur = nomUtilisateur;
+        this.email = email;
+    }
 
     public Long getId() {
         return id;
@@ -67,7 +89,7 @@ public class Utilisateur {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Utilisateur that)) return false;
+        if (!(o instanceof UtilisateurEntity that)) return false;
         return Objects.equals(id, that.id) &&
                 Objects.equals(email, that.email);
     }

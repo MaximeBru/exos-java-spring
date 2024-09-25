@@ -1,0 +1,23 @@
+<code_scheme name="CustomJavaCodeStyle" version="173">
+    <JavaCodeStyleSettings>
+        <option name="USE_SAME_INDENTS" value="false" />
+        <option name="PREFER_LONGER_NAMES" value="true" />
+        <option name="ALIGN_MULTILINE_EXTENDS_LIST" value="true" />
+        <option name="ALIGN_MULTILINE_PARAMETERS" value="true" />
+        <option name="ALIGN_MULTILINE_PARAMETERS_IN_CALLS" value="true" />
+        <option name="ALIGN_MULTILINE_FOR" value="true" />
+        <option name="ALIGN_MULTILINE_BINARY_OPERATION" value="true" />
+    </JavaCodeStyleSettings>
+    <codeStyleSettings language="JAVA">
+        <option name="BLANK_LINES_AROUND_FIELD_IN_INTERFACE" value="1" />
+        <option name="BLANK_LINES_AROUND_METHOD_IN_INTERFACE" value="1" />
+        <option name="BLANK_LINES_AFTER_CLASS_HEADER" value="1" />
+        <option name="BLANK_LINES_BEFORE_CLASS_END" value="1" />
+        <option name="KEEP_FIRST_COLUMN_COMMENT" value="true" />
+        <option name="INDENT_SIZE" value="4" />
+        <option name="CONTINUATION_INDENT_SIZE" value="8" />
+        <option name="TAB_SIZE" value="4" />
+        <option name="RIGHT_MARGIN" value="120" />
+        <option name="FORMATTER_TAGS" value="true" />
+    </codeStyleSettings>
+</code_scheme>
