@@ -4,11 +4,14 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 
 @Entity
-@Table(name = "utilisateurs", uniqueConstraints = {
+@Table(name = "utilisateur", uniqueConstraints = {
         @UniqueConstraint(columnNames = "email")
 })
 public class UtilisateurEntity {
@@ -32,6 +35,16 @@ public class UtilisateurEntity {
     @Column(name = "mot_de_passe", nullable = false)
     private String motDePasse;
 
+    @Column(name = "login", length = 50, nullable = false)
+    private String login;
+
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "utilisateur_role",
+            joinColumns = {@JoinColumn(name = "utilisateur_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "role_nom", referencedColumnName = "nom")}
+    )
+    private Set<RoleEntity> roles = new HashSet<>();
     public UtilisateurEntity(){
     }
 
@@ -77,13 +90,27 @@ public class UtilisateurEntity {
     public void setEmail(String email) {
         this.email = email;
     }
+    public String getLogin() {
+        return login;
+    }
 
+    public void setLogin(String login) {
+        this.login = login;
+    }
     public String getMotDePasse() {
         return motDePasse;
     }
 
     public void setMotDePasse(String motDePasse) {
         this.motDePasse = motDePasse;
+    }
+
+    public Set<RoleEntity> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<RoleEntity> roles) {
+        this.roles = roles;
     }
 
     @Override

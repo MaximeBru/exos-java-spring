@@ -88,6 +88,10 @@
 			<artifactId>mssql-jdbc</artifactId>
 			<version>9.4.0.jre8</version> <!-- Vérifie la dernière version -->
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
