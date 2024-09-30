@@ -1,6 +1,7 @@
 package com.backend_java.demo.controller;
 
 import com.backend_java.demo.Utilisateur;
+import com.backend_java.demo.UtilisateurToEdit;
 import com.backend_java.demo.UtilisateurToSave;
 import com.backend_java.demo.service.UtilisateurService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -64,6 +65,22 @@ public class UtilisateurController {
     @PostMapping
     public Utilisateur createUtilisateur(@RequestBody @Valid UtilisateurToSave utilisateurToSave) {
         return utilisateurService.create(utilisateurToSave);
+    }
+
+    @Operation(summary = "Mettre à jour un utilisateur", description = "Mettre à jour un utilisateur")
+    @ApiResponses(value = {
+            @ApiResponse(responseCode = "200", description = "Utilisateur mis à jour",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = UtilisateurToEdit.class))}),
+            @ApiResponse(responseCode = "404", description = "Utilisateur avec le nom spécifié non trouvé",
+                    content = {@Content(mediaType = "application/json",
+                            schema = @Schema(implementation = Error.class))}),
+            @ApiResponse(responseCode = "403", description = "Cet utilisateur n'est pas autorisé")
+
+    })
+    @PutMapping
+    public Utilisateur updateUtilisateur(@RequestBody @Valid UtilisateurToEdit utilisateurToEdit) {
+        return utilisateurService.update(utilisateurToEdit);
     }
 
     @Operation(summary = "Supprimer un utilisateur", description = "Supprimer un utilisateur")

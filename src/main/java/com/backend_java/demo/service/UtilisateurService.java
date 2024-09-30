@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import com.backend_java.demo.Utilisateur;
+import com.backend_java.demo.UtilisateurToEdit;
 import com.backend_java.demo.UtilisateurToSave;
 import com.backend_java.demo.data.UtilisateurEntity;
 import com.backend_java.demo.data.UtilisateurRepository;
@@ -56,16 +57,16 @@ public class UtilisateurService {
         return getByNomUtilisateur(registeredUtilisateur.getNomUtilisateur());
     }
 
-    public Utilisateur update(UtilisateurToSave utilisateurToSave) {
-        Optional<UtilisateurEntity> bonUtilisateur = utilisateurRepository.findOneByNomUtilisateurIgnoreCase(utilisateurToSave.nomUtilisateur());
+    public Utilisateur update(UtilisateurToEdit utilisateurToEdit) {
+        Optional<UtilisateurEntity> bonUtilisateur = utilisateurRepository.findOneByNomUtilisateurIgnoreCase(utilisateurToEdit.nomUtilisateur());
 
         if (bonUtilisateur.isEmpty()) {
-            throw new UtilisateurNonTrouveException(utilisateurToSave.nomUtilisateur());
+            throw new UtilisateurNonTrouveException(utilisateurToEdit.nomUtilisateur());
         }
 
         UtilisateurEntity utilisateurAMettreAJour = bonUtilisateur.get();
-        utilisateurAMettreAJour.setEmail(utilisateurToSave.email());
-        utilisateurAMettreAJour.setMotDePasse(utilisateurToSave.motDePasse());
+        utilisateurAMettreAJour.setEmail(utilisateurToEdit.email());
+        utilisateurAMettreAJour.setMotDePasse(utilisateurToEdit.motDePasse());
 
         UtilisateurEntity updatedUtilisateur = utilisateurRepository.save(utilisateurAMettreAJour);
 
