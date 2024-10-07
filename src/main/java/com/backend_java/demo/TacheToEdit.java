@@ -1,0 +1,11 @@
+
+package com.backend_java.demo;
+
+import java.time.LocalDate;
+
+public record TacheToEdit(
+    String titre,
+    String description,
+    LocalDate dateEcheance,
+    String statut
+) {}
